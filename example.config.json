@@ -1,0 +1,7 @@
+{
+  "DB_URI": "",
+  "TOKEN": "",
+  "ADMINS": [],
+  "DEFAULT_PREFIX": ".rvn",
+  "STARTUP_EXTENSIONS": []
+}
