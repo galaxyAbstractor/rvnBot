@@ -1,3 +1,5 @@
 *.iml
 .idea
 config.json
+
+*.pyc
