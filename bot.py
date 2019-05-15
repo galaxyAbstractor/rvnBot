@@ -76,6 +76,14 @@ async def run():
     bot.session = aiohttp.ClientSession()
     bot.pool = pool
     bot.start_time = datetime.datetime.utcnow()
+
+    for extension in STARTUP_EXTENSIONS:
+        try:
+            bot.load_extension(extension)
+        except Exception as e:
+            print(f'Failed to load extension {extension}.', file=sys.stderr)
+            traceback.print_exc()
+
     try:
         await bot.start(TOKEN)
     except KeyboardInterrupt:
@@ -85,11 +93,5 @@ async def run():
 
 
 if __name__ == "__main__":
-    for extension in STARTUP_EXTENSIONS:
-        try:
-            bot.load_extension(extension)
-        except Exception as e:
-            print(f'Failed to load extension {extension}.', file=sys.stderr)
-            traceback.print_exc()
     loop = asyncio.get_event_loop()
     loop.run_until_complete(run())
