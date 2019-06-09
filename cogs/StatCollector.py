@@ -18,7 +18,7 @@ class StatCollector(commands.Cog):
         if not isinstance(message.channel, TextChannel):
             return
 
-        user = await self.users.fetch(message.author.id)
+        await self.stats.handle_message_stat(message)
 
 
     @commands.Cog.listener()
